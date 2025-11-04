@@ -8,18 +8,19 @@
 #include <iomanip>
 using namespace std;
 
-// const int SZ = 20000, COLS = 3, ROWS = 4, TESTS = 4;
-const int STRUCTURES = 3;
-const int ROWS = 4, COLS = 3;
-const int W1 = 10;
+const int RUNS = 15; // number of test runs
+const int OPERATIONS = 4; // read, sort, insert, delete
+const int STRUCTURES = 3; // vector, list, set
 
 int main() {
-    int results[ROWS][COLS];
+    int results3D[RUNS][OPERATIONS][STRUCTURES]; // each run's results
+    int accumulator[OPERATIONS][STRUCTURES] = {0}; // totals for averaging
     string cd;
     vector<string> data_vector;
     list<string> data_list;
     set<string> data_set;
 
+    for i
     // testing for READ operations
     for (int i = 0; i < STRUCTURES; i++) {
         ifstream fin("codes.txt");
