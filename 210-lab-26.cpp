@@ -26,7 +26,7 @@ int main() {
     list<string> data_list;
     set<string> data_set;
 
-    // testing for READ operations
+    // READ TEST - measure time to load data into each structure
     for (int i = 0; i < STRUCTURES; i++) {
         ifstream fin("codes.txt");
         if (!fin){
@@ -66,7 +66,7 @@ int main() {
         fin.close();
     }
 
-    // testing for SORT operations
+    // SORT TEST - sort vectore and list
     for (int i = 0; i < STRUCTURES; i++) {
         auto start = chrono::high_resolution_clock::now();
         switch(i) {
@@ -96,7 +96,7 @@ int main() {
         }
     }
 
-    // testing for INSERT operations
+    // INSERT TEST - insert a value in the middle or into set
     for (int i = 0; i < STRUCTURES; i++) {
         int ind_v = data_vector.size() / 2;
         int ind_l = data_list.size() / 2;
@@ -134,7 +134,7 @@ int main() {
         }
     }
 
-    // testing for DELETE operations
+    // DELETE TEST - remove one element from each structure
     for (int i = 0; i < STRUCTURES; i++) {
         // select a target value in the vector 
         int ind = data_vector.size() / 2;
@@ -181,7 +181,7 @@ int main() {
             }
         }
     }
-
+    // show results for current run
     string labels[] = {"Read", "Sort", "Insert", "Delete"};
     cout << setw(W1) << "Operation" << setw(W1) << "Vector" << setw(W1) << "List"
          << setw(W1) << "Set" << endl;
@@ -199,7 +199,7 @@ int main() {
     } // closing new loop
     
     // after loops ends
-    cout << "\nNumber ofsimulations: " << RUNS << endl;
+    cout << "\nNumber of simulations: " << RUNS << endl;
     // compute averages
     double averages[OPERATIONS][STRUCTURES];
     for (int i = 0; i < OPERATIONS; i++) {
@@ -208,7 +208,7 @@ int main() {
         }
     }
 
-    // formatted results
+    // average output
     string labels[] = {"Read", "Sort", "Insert", "Delete"};
     cout << setw(W1) << "Operation" << setw(W1) << "Vector" << setw(W1) << "List"
          << setw(W1) << "Set" << endl;
