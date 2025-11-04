@@ -197,5 +197,16 @@ int main() {
             << results3D[run][0][0] << " microseconds" << endl;
     
     } // closing new loop
+    
+    // after loops ends
+    cout << "\nNumber ofsimulations: " << RUNS << endl;
+    // compute averages
+    double averages[OPERATIONS][STRUCTURES];
+    for (int i = 0; i < OPERATIONS; i++) {
+        for (int j = 0; j < STRUCTURES; j++) {
+            averages[i][j] = static_cast<double>(accumulator[i][j]) / RUNS;
+        }
+    }
+
     return 0;
 }
