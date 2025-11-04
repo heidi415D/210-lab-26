@@ -19,7 +19,7 @@ int main() {
     int accumulator[OPERATIONS][STRUCTURES] = {0}; // totals for averaging
     string cd;
 
-    for (int i = 0; run < RUNS; run++) { // outerloop - repeat RUNS times
+    for (int run = 0; run < RUNS; run++) { // outerloop - repeat RUNS times
         cout << "\n--- Simulation " << run + 1 << " ---\n";
 
     vector<string> data_vector;
@@ -29,6 +29,10 @@ int main() {
     // testing for READ operations
     for (int i = 0; i < STRUCTURES; i++) {
         ifstream fin("codes.txt");
+        if (!fin){
+            cout << "File not found!" << run + 1 << endl;
+            break;
+        }
         auto start = chrono::high_resolution_clock::now();
         switch(i) {
             case 0: {  // read into a vector
@@ -187,6 +191,10 @@ int main() {
             cout << setw(W1) << accumulator[i][j];
         cout << endl;
     }
+
+    // debug print to see if works
+    cout << "Run " << run + 1 << " Vector read time: "
+            << results3D[run][0][0] << " microseconds" << endl;
     
     } // closing new loop
     return 0;
