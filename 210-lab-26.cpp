@@ -208,5 +208,17 @@ int main() {
         }
     }
 
+    // formatted results
+    string labels[] = {"Read", "Sort", "Insert", "Delete"};
+    cout << setw(W1) << "Operation" << setw(W1) << "Vector" << setw(W1) << "List"
+         << setw(W1) << "Set" << endl;
+    for (int i = 0; i < OPERATIONS; i++) {
+        cout << setw(W1) << labels[i];
+        for (int j = 0; j < STRUCTURES; j++) {
+            cout << setw(W1) << fixed << setprecision(2) << averages[i][j];
+        }
+        cout << endl;
+    }
+
     return 0;
 }
