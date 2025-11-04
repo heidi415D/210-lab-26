@@ -11,17 +11,20 @@ using namespace std;
 const int RUNS = 15; // number of test runs
 const int OPERATIONS = 4; // read, sort, insert, delete
 const int STRUCTURES = 3; // vector, list, set
+const int W1 = 10; // column spacing
+
 
 int main() {
     int results3D[RUNS][OPERATIONS][STRUCTURES]; // each run's results
     int accumulator[OPERATIONS][STRUCTURES] = {0}; // totals for averaging
     string cd;
+
+    for (int i = 0; run < RUNS; run++) { // outerloop - repeat RUNS times
+        cout << "\n--- Simulation " << run + 1 << " ---\n";
+
     vector<string> data_vector;
     list<string> data_list;
     set<string> data_set;
-
-    for (int i = 0; i < STRUCTURES; i++) {
-        cout << "\n--- Simulation " << run + 1 << " ---\n";
 
     // testing for READ operations
     for (int i = 0; i < STRUCTURES; i++) {
@@ -82,7 +85,8 @@ int main() {
                 break;
             }
             case 2: {  // can't sort a set, so set to -1
-                results[1][i] = -1;
+                results3D[run][1][i] = -1; // set cant be sorted
+                accumulator[1][i] += -1;
                 break;
             }
         }
@@ -179,8 +183,8 @@ int main() {
          << setw(W1) << "Set" << endl;
     for (int i = 0; i < 4; i++) {
         cout << setw(W1) << labels[i];
-        for (int j = 0; j < COLS; j++) 
-            cout << setw(W1) << results[i][j];
+        for (int j = 0; j < STRUCTURES; j++) 
+            cout << setw(W1) << accumulator[i][j];
         cout << endl;
     }
     
